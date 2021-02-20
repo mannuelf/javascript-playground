@@ -1,40 +1,38 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
-function Header({ name }) {
-  return (
-    <header>
-      <h1>{name}</h1>
-    </header>
-  );
-}
+function App({ login }) {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-function Main(props) {
-  return (
-    <main>
-      <h2>{props.content}</h2>
-    </main>
-  );
-}
+  useEffect(() => {
+    if (!login) return;
+    setLoading(true);
+    fetch(`https://api.github.com/users/${login}`)
+      .then((response) => response.json())
+      .then(setData)
+      .then(() => setLoading(false))
+      .catch(setError);
+  }, [login]);
 
-function Footer(props) {
-  return (
-    <footer>
-      <h3>
-        {props.message} {props.year}
-      </h3>
-    </footer>
-  );
-}
+  if (loading) return <h1>loading...</h1>;
+  if (error) return <pre>{JSON.stringify(error, null, 2)}</pre>;
+  if (!data) return null;
 
-function App() {
   return (
-    <div className="App">
-      <Header name="Mannuel" />
-      <Main content="This is a cool website" />
-      <Footer year={new Date().getFullYear()} message="Copyright ©" />
+    <div>
+      <h1>{data.name}</h1>
+      <img src={data.avatar_url} alt={data.name} />
     </div>
   );
 }
 
 export default App;
+
+/* https://api.github.com/users/mannuelf 
+  takes in current state and returns a new state.
+  takes in two args
+  1st function
+  2nd the initial state
+*/

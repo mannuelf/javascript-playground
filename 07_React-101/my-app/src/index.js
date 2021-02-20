@@ -33,9 +33,14 @@ import App from './App';
   document.getElementById('root')
 );*/
 
+// array destructuring
+// const [mostImportantItem, secondItem] = ['computer', 'car', 'house', 'bread'];
+const [, , , food] = ['computer', 'car', 'house', 'bread'];
+console.log(food);
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App authorized={false} login="mannuelf" />
   </React.StrictMode>,
   document.getElementById('root')
 );
