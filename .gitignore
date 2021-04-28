@@ -13,6 +13,8 @@ _design
 
 # production
 /build
+.cache
+dist
 
 # misc
 .DS_Store
