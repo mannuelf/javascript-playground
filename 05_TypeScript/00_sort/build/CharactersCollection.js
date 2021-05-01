@@ -7,7 +7,7 @@ var CharactersCollection = /** @class */ (function () {
     }
     Object.defineProperty(CharactersCollection.prototype, "length", {
         get: function () {
-            return this.data.length;
+            this.data.length;
         },
         enumerable: false,
         configurable: true

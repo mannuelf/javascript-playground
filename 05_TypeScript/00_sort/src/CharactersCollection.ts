@@ -2,7 +2,7 @@ export class CharactersCollection {
   constructor(public data: string) {}
 
   get length(): number {
-    return this.data.length;
+    this.data.length;
   }
 
   compare(leftIndex: number, rightIndex: number): boolean {

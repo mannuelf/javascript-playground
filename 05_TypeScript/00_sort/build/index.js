@@ -13,4 +13,3 @@ console.log(numbersCollection.data);
 var charsCollection = new CharactersCollection_1.CharactersCollection('Xoushw');
 var sorter = new Sorter_1.Sorter(charsCollection);
 sorter.sort();
-console.log(charsCollection.data);
