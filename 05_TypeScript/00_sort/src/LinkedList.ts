@@ -53,6 +53,7 @@ export class LinkedList {
       counter++;
       node = node.next;
     }
+
     throw new Error('Index out of bounds');
   }
 
@@ -60,10 +61,11 @@ export class LinkedList {
     if (!this.head) {
       throw new Error('List is empty');
     }
+
     return this.at(leftIndex).data > this.at(rightIndex).data;
   }
 
-  swop(leftIndex: number, rightIndex: number): void {
+  swap(leftIndex: number, rightIndex: number): void {
     const leftNode = this.at(leftIndex);
     const rightNode = this.at(rightIndex);
 
@@ -76,7 +78,8 @@ export class LinkedList {
     if (!this.head) {
       return;
     }
-    let node = this.head;
+
+    let node: Node | null = this.head;
     while (node) {
       console.log(node.data);
       node = node.next;
