@@ -1,24 +1,23 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var Sorter_1 = require("./Sorter");
+var NumbersCollection_1 = require("./NumbersCollection");
+var CharactersCollection_1 = require("./CharactersCollection");
 var LinkedList_1 = require("./LinkedList");
+var numbersCollection = new NumbersCollection_1.NumbersCollection([100, 3, 224, 55, 1]);
 /*
-const numbersCollection = new NumbersCollection([100, 3, 224, 55, 1]);
-const sorter = new Sorter(numbersCollection);
-sorter.sort();
+ * To make callable methods on a class, it should be made into an abstract class
+ * Abstract classes cannot be creat an instance of an abstract class
+ * */
+numbersCollection.sort();
 console.log(numbersCollection.data);
-*/
-/*
-const charsCollection = new CharactersCollection('Xoushw');
-const sorter = new Sorter(charsCollection);
-sorter.sort();
-*/
+var charsCollection = new CharactersCollection_1.CharactersCollection('Xoushw');
+charsCollection.sort();
+console.log(charsCollection.data);
 var linkedList = new LinkedList_1.LinkedList();
 linkedList.add(500);
 linkedList.add(-10);
 linkedList.add(2992);
 linkedList.add(78);
 linkedList.add(3);
-var sorter = new Sorter_1.Sorter(linkedList);
-sorter.sort();
+linkedList.sort();
 linkedList.print();
