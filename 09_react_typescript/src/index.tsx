@@ -21,6 +21,7 @@ class App extends React.Component<AppProps> {
       <div>
         <button onClick={this.onIncrement}>Increment</button>
         <button onClick={this.onDecrement}>Decrement</button>
+        {this.state.counter}
       </div>
     );
   }
