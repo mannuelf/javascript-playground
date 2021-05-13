@@ -1,5 +1,12 @@
 import axios from 'axios';
 import { Dispatch } from 'redux';
+import { ActionTypes } from './types';
+
+interface ITodo {
+  id: number;
+  title: string;
+  completed: boolean;
+}
 
 const url = 'https://jsonplaceholder.typicode.com/todos';
 
@@ -7,10 +14,10 @@ const url = 'https://jsonplaceholder.typicode.com/todos';
 export const fetchTodos = () => {
   // provide a type annotation for dispatch, look at the TypeDef file.
   return async (dispatch: Dispatch) => {
-    const response = await axios.get(url);
+    const response = await axios.get<ITodo[]>(url);
 
     dispatch({
-      type: 'FETCH_TODOS',
+      type: ActionTypes.fetchTodos,
       payload: response.data,
     });
   };
