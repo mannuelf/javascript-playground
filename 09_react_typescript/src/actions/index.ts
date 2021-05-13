@@ -8,6 +8,11 @@ interface ITodo {
   completed: boolean;
 }
 
+interface IFetchTodosAction {
+  type: ActionTypes.fetchTodos;
+  payload: ITodo[];
+}
+
 const url = 'https://jsonplaceholder.typicode.com/todos';
 
 // async action creator, must use redux thunk
@@ -16,7 +21,7 @@ export const fetchTodos = () => {
   return async (dispatch: Dispatch) => {
     const response = await axios.get<ITodo[]>(url);
 
-    dispatch({
+    dispatch<IFetchTodosAction>({
       type: ActionTypes.fetchTodos,
       payload: response.data,
     });
