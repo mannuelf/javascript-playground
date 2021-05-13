@@ -5,7 +5,11 @@ interface IAppProps {
   color?: string;
 }
 
-class App extends React.Component<IAppProps> {
+const App = (props: IAppProps): JSX.Element => {
+  return <div>{props.color}</div>;
+};
+
+/*class App extends React.Component<IAppProps> {
   state = { counter: 0 };
 
   onIncrement = (): void => {
@@ -25,6 +29,6 @@ class App extends React.Component<IAppProps> {
       </div>
     );
   }
-}
+}*/
 
 ReactDOM.render(<App color="red" />, document.getElementById('root'));
