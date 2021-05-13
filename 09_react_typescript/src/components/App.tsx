@@ -9,13 +9,16 @@ interface IAppProps {
 }
 
 class _App extends React.Component<IAppProps> {
-  componentDidMount() {
+  onButtonClick = (): void => {
     this.props.fetchTodos();
-  }
+  };
 
   render() {
-    console.log(this.props.todos);
-    return <div>Hi from APP!</div>;
+    return (
+      <div>
+        <button onClick={this.onButtonClick}>Fetch</button>
+      </div>
+    );
   }
 }
 
