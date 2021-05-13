@@ -21,6 +21,7 @@ export const fetchTodos = () => {
   return async (dispatch: Dispatch) => {
     const response = await axios.get<ITodo[]>(url);
 
+    // generic to ensure action obj has correct types
     dispatch<IFetchTodosAction>({
       type: ActionTypes.fetchTodos,
       payload: response.data,
