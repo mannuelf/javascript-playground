@@ -13,6 +13,12 @@ export interface IFetchTodosAction {
   payload: ITodo[];
 }
 
+// model the structure an action should have
+export interface IDeleteTodoAction {
+  type: ActionTypes.deleteTodo;
+  payload: number;
+}
+
 const url = 'https://jsonplaceholder.typicode.com/todos';
 
 // async action creator, must use redux thunk
@@ -26,5 +32,12 @@ export const fetchTodos = () => {
       type: ActionTypes.fetchTodos,
       payload: response.data,
     });
+  };
+};
+
+export const deleteTodo = (id: number): IDeleteTodoAction => {
+  return {
+    type: ActionTypes.deleteTodo,
+    payload: id,
   };
 };
