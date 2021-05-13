@@ -9,7 +9,12 @@ interface IAppProps {
 }
 
 class _App extends React.Component<IAppProps> {
+  componentDidMount() {
+    this.props.fetchTodos();
+  }
+
   render() {
+    console.log(this.props.todos);
     return <div>Hi from APP!</div>;
   }
 }
