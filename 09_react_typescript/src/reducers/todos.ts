@@ -1,5 +1,4 @@
-import { ITodo, IFetchTodosAction } from '../actions';
-import { ActionTypes } from '../actions/types';
+import { ActionTypes, ITodo, IFetchTodosAction } from '../actions';
 
 // state is array of Todos or init with empty array
 export const todosReducer = (
