@@ -5,7 +5,7 @@ import { IStoreState } from '../reducers';
 
 interface IAppProps {
   todos: ITodo[];
-  fetchTodos: typeof fetchTodos;
+  fetchTodos: Function;
   deleteTodo: typeof deleteTodo;
 }
 
