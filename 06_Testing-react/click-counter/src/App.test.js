@@ -11,17 +11,29 @@ test('renders without error', () => {
 });
 
 test('renders increment button', () => {
+  const wrapper = shallow(<App />);
+  const appComponent = wrapper.find("[data-test='increment-button']");
+  expect(appComponent.length).toBe(1);
   //
 });
 
 test('renders counter display', () => {
+  const wrapper = shallow(<App />);
+  const appComponent = wrapper.find("[data-test='counter-display']");
+  expect(appComponent.length).toBe(1);
   //
 });
 
 test('counter display starts at 0', () => {
+  const wrapper = shallow(<App />);
+  const appComponent = wrapper.find("[data-test='component-app']");
+  expect(appComponent.length).toBe(1);
   //
 });
 
 test('clikcing button increments counter display', () => {
+  const wrapper = shallow(<App />);
+  const appComponent = wrapper.find("[data-test='component-app']");
+  expect(appComponent.length).toBe(1);
   //
 });
