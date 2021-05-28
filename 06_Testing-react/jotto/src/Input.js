@@ -1,4 +1,7 @@
-const Input = props => {
+import React from 'react';
+import PropTypes from 'prop-types';
+
+const Input = ({ secretWord }) => {
   return (
     <input
       data-test="component-input"
@@ -8,6 +11,10 @@ const Input = props => {
       className="form-control"
     />
   );
+};
+
+Input.propTypes = {
+  secretWord: PropTypes.string.isRequired,
 };
 
 export default Input;
