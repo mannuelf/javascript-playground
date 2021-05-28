@@ -6,10 +6,12 @@ import GuessedWords from './GuessedWords';
 let wrapper;
 
 const defaultProps = {
-  guessedWords: {
-    guessedWord: 'train',
-    letterMatchCount: 3,
-  },
+  guessedWords: [
+    {
+      guessedWord: 'train',
+      letterMatchCount: 3,
+    },
+  ],
 };
 
 /**
