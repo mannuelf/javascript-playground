@@ -8,7 +8,7 @@ import Input from './Input';
  * spread in the actual react package
  * overwrite the useState: with my own use state
  */
-const mockSetCurrentGuess = jest.fn();
+let mockSetCurrentGuess = jest.fn();
 jest.mock('react', () => ({
   ...jest.requireActual('react'),
   useState: initialState => [initialState, mockSetCurrentGuess],
@@ -33,10 +33,24 @@ test('does not throw warning with expected props', () => {
 });
 
 describe('state controlled input field', () => {
-  test('state updates with value of input box upon change', () => {
-    const wrapper = setup();
-    const inputBox = findByTestAttr(wrapper, 'input-box');
+  let wrapper;
+  let mockSetCurrentGuess = jest.fn();
+  let originalUseState;
 
+  beforeEach(() => {
+    // clear out previouse state values so the new test does not use previous tests values
+    mockSetCurrentGuess.mockClear();
+    originalUseState = React.useState;
+    React.useState = () => ['🚀', mockSetCurrentGuess];
+    wrapper = setup();
+  });
+
+  afterEach(() => {
+    React.useState = originalUseState;
+  });
+
+  test('state updates with value of input box upon change', () => {
+    const inputBox = findByTestAttr(wrapper, 'input-box');
     // simulate the act of user giving a value to the input.
     const mockEvent = { target: { value: 'train' } };
     inputBox.simulate('change', mockEvent);
@@ -44,9 +58,8 @@ describe('state controlled input field', () => {
   });
 
   test('guess is made with empty string', () => {
-    const wrapper = setup();
     const submitButton = findByTestAttr(wrapper, 'submit-button');
-    submitButton.simulate('click');
+    submitButton.simulate('click', { preventDefault() {} });
     expect(mockSetCurrentGuess).toHaveBeenCalledWith('');
   });
 });
