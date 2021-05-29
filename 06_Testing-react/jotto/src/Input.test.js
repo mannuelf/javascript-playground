@@ -3,6 +3,18 @@ import { shallow } from 'enzyme';
 import { checkProps, findByTestAttr } from './testUtils';
 import Input from './Input';
 
+const mockSetCurrentGuess = jest.fn();
+
+/**
+ * Mock the react package
+ * spread in the actual reas package
+ * overwrite the useState: with my own use state
+ */
+jest.mock('react', () => ({
+  ...jest.requireActual('react'),
+  useState: initialState => [initialState, mockSetCurrentGuess],
+}));
+
 /**
  * Setup function for app component.
  * @returns {ShallowWrapper}
@@ -23,9 +35,6 @@ test('does not throw warning with expected props', () => {
 
 describe('state controlled input field', () => {
   test('state updates with value of input box upon change', () => {
-    const mockSetCurrentGuess = jest.fn();
-    React.useState = jest.fn(() => ['', mockSetCurrentGuess]);
-
     const wrapper = setup();
     const inputBox = findByTestAttr(wrapper, 'input-box');
 
@@ -35,4 +44,3 @@ describe('state controlled input field', () => {
     expect(mockSetCurrentGuess).toHaveBeenCalledWith('train');
   });
 });
-//
