@@ -7,7 +7,7 @@ const mockSetCurrentGuess = jest.fn();
 
 /**
  * Mock the react package
- * spread in the actual reas package
+ * spread in the actual react package
  * overwrite the useState: with my own use state
  */
 jest.mock('react', () => ({
