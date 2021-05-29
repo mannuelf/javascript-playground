@@ -20,3 +20,19 @@ test('Input renders without error', () => {
 test('does not throw warning with expected props', () => {
   checkProps(Input, { secretWord: 'train' });
 });
+
+describe('state controlled input field', () => {
+  test('state updates with value of input box upon change', () => {
+    const mockSetCurrentGuess = jest.fn();
+    React.useState = jest.fn(() => ['', mockSetCurrentGuess]);
+
+    const wrapper = setup();
+    const inputBox = findByTestAttr(wrapper, 'input-box');
+
+    // simulate the act of user giving a value to the input.
+    const mockEvent = { traget: { value: 'train' } };
+    inputBox.simulate('change', mockEvent);
+    expect(mockSetCurrentGuess).toHaveBeenCalledWith('train');
+  });
+});
+//
