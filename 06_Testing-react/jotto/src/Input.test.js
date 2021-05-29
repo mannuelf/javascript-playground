@@ -30,7 +30,7 @@ describe('state controlled input field', () => {
     const inputBox = findByTestAttr(wrapper, 'input-box');
 
     // simulate the act of user giving a value to the input.
-    const mockEvent = { traget: { value: 'train' } };
+    const mockEvent = { target: { value: 'train' } };
     inputBox.simulate('change', mockEvent);
     expect(mockSetCurrentGuess).toHaveBeenCalledWith('train');
   });
