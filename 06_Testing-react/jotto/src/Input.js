@@ -1,9 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Input = ({ secretWord }) => {
+const Input = ({ success = true, secretWord }) => {
   // not destructure useState so can mock, use from default export of React
   const [currentGuess, setCurrentGuess] = React.useState('');
+
+  if (success) {
+    return <div data-test="component-input" />;
+  }
 
   return (
     <div data-test="component-input">
