@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Input = ({ success = true, secretWord }) => {
+const Input = ({ success, secretWord }) => {
   // not destructure useState so can mock, use from default export of React
   const [currentGuess, setCurrentGuess] = React.useState('');
 
@@ -21,7 +21,7 @@ const Input = ({ success = true, secretWord }) => {
           value={currentGuess}
           onChange={event => setCurrentGuess(event.target.value)}
         />
-        <buttton
+        <button
           data-test="submit-button"
           className="btn btn-primary mb-2"
           onClick={() => {
@@ -31,7 +31,7 @@ const Input = ({ success = true, secretWord }) => {
           }}
         >
           Submit
-        </buttton>
+        </button>
       </form>
     </div>
   );
