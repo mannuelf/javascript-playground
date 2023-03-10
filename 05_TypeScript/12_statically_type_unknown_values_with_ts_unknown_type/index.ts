@@ -9,11 +9,19 @@ if (typeof thing === 'string') {
   console.log(uppercasText);
 }
 
+// assertion signature
+function assert(condition: boolean, message: string): asserts condition {
+  if (!condition) {
+    throw Error(message);
+  }
+}
+
+// function overload signature
 function range(from: number, to: number): number[];
 function range(from: unknown, to: unknown): number[] {
-  if (typeof from !== 'number' || typeof to !== 'number') {
-    throw Error('range() expects exactly 2 numbers');
-  }
+  assert(typeof from === 'number', 'from must be a number');
+  assert(typeof to === 'number', 'to must be a number');
+
   const values: number[] = [];
   for (let i = from; i < to; i++) {
     values.push(i);
@@ -21,4 +29,4 @@ function range(from: unknown, to: unknown): number[] {
   return values;
 }
 
-console.log(range(0, 100));
+console.log(range('A' as any, 'Z' as any));
