@@ -1,3 +1,5 @@
+// https://egghead.io/lessons/typescript-use-the-nullish-coalescing-operator-in-typescript
+
 type SerializationOptions = {
   formatting?: {
     getIndent?: () => number;
